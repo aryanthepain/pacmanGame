@@ -1,5 +1,5 @@
 # Compiler
-CXX = g++
+CC = g++
 
 # Compiler flags
 CXXFLAGS = -Iinclude -Wall -Wextra -pedantic
@@ -9,34 +9,43 @@ SRCDIR = src
 OBJDIR = obj
 SOURCES = $(wildcard $(SRCDIR)/*.cpp)
 OBJECTS = $(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.o, $(SOURCES))
-EXEC = pacman
+OBJ_NAME = pacman
+
+# Linker flags
+LINKER_FLAGS = -lSDL2
 
 # Default rule
-all: $(EXEC)
-	@echo "    "
-	@echo "=============="
-	@echo "Compilation completed successfully"
-	
+all: $(OBJ_NAME)
+	@echo "Build complete. Executable: $(OBJ_NAME)"
+
 # Link the executable
-$(EXEC): $(OBJECTS)
-	$(CXX) $(OBJECTS) -o $@
+$(OBJ_NAME): $(OBJECTS)
+	$(CC) $(OBJECTS) $(LINKER_FLAGS) -o $@
+	@echo "Linking complete. Created executable: $@"
 
 # Compile source files to object files
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp | $(OBJDIR)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CC) $(CXXFLAGS) -c $< -o $@
+	@echo "Compiled: $< -> $@"
 
 # Create the object directory if it doesn't exist
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
-	
-git:
+	@echo "Created directory: $(OBJDIR)"
+
+#to add to github repo
+#make git m="message" b="your-branch(main by defualt)"
+b?=main
+m?=$(shell date '+%Y-%m-%d %H:%M:%S')
+git: 
 	git add .
 	git commit -m "$(m)"
-	git push origin main
+	git push origin $(b)
 
 # Clean up generated files
 clean:
-	rm -rf $(OBJDIR) $(EXEC)
+	rm -rf $(OBJDIR) $(OBJ_NAME)
+	@echo "Cleaned up generated files."
 
 # Phony targets
 .PHONY: all clean
