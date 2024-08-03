@@ -4,6 +4,9 @@ CC = g++
 # Compiler flags
 CXXFLAGS = -Iinclude -Wall -Wextra -pedantic
 
+# Linker flags
+LINKER_FLAGS = -lSDL2
+
 # Source and object files
 SRCDIR = src
 OBJDIR = obj
@@ -11,8 +14,6 @@ SOURCES = $(wildcard $(SRCDIR)/*.cpp)
 OBJECTS = $(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.o, $(SOURCES))
 OBJ_NAME = pacman
 
-# Linker flags
-LINKER_FLAGS = -lSDL2
 
 # Default rule
 all: $(OBJ_NAME)
