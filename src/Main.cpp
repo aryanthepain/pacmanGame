@@ -1,56 +1,57 @@
-//author:Aryanthepain
-#include <SDL2/SDL.h>
+// author:Aryanthepain
+#include <ncurses/curses.h>
 #include <bits/stdc++.h>
-typedef long long ll;
-using namespace std;
+// #include <ctime>
+// using namespace std;
 
-//Screen dimension constants
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
-
-int main(int argc, char* args[])
+struct Snake
 {
-	//The window we'll be rendering to
-	SDL_Window* window = NULL;
-	
-	//The surface contained by the window
-	SDL_Surface* screenSurface = NULL;
+	std::vector<std::pair<int, int>> body;
+	int direction;
+};
 
-	//Initialize SDL
-	if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
+void init_game(Snake &snake1, Snake &snake2, int &food_x, int &food_y, int max_x, int max_y)
+{
+	// Initialize snakes and food position
+}
+
+void update_snake(Snake &snake, int max_x, int max_y)
+{
+	// Update snake position based on direction
+}
+
+bool check_collision(const Snake &snake1, const Snake &snake2, int food_x, int food_y)
+{
+	// Check for collisions
+	return false;
+}
+
+int main()
+{
+	// Initialize ncurses
+	initscr();
+	cbreak();
+	noecho();
+	keypad(stdscr, TRUE);
+	curs_set(0);
+	// timeout(100);
+
+	int max_x, max_y;
+	getmaxyx(stdscr, max_y, max_x);
+
+	Snake snake1, snake2;
+	int food_x, food_y;
+	init_game(snake1, snake2, food_x, food_y, max_x, max_y);
+
+	while (true)
 	{
-		cout << "SDL could not initialize! SDL_Error: "<< SDL_GetError() << endl;
-		
+		// Handle input
+		// Update game state
+		// Draw everything
+		// Check for game over
 	}
-	else
-	{
-		//Create window
-		window = SDL_CreateWindow( "PacMan by Aryan Gupta", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
-		if( window == NULL )
-		{
-			printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
-		}
-		else
-		{
-			//Get window surface
-			screenSurface = SDL_GetWindowSurface( window );
-
-			//Fill the surface white
-			SDL_FillRect( screenSurface, NULL, SDL_MapRGB( screenSurface->format, 0x00, 0x00, 0x00 ) );
-			
-			//Update the surface
-			SDL_UpdateWindowSurface( window );
-            
-            //Hack to get window to stay up
-            SDL_Event e; bool quit = false; while( quit == false ){ while( SDL_PollEvent( &e ) ){ if( e.type == SDL_QUIT ) quit = true; } }
-		}
-	}
-
-	//Destroy window
-	SDL_DestroyWindow( window );
-
-	//Quit SDL subsystems
-	SDL_Quit();
-
+	getch();
+	// Cleanup
+	endwin();
 	return 0;
 }

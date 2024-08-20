@@ -5,7 +5,7 @@ CC = g++
 CXXFLAGS = -Iinclude -Wall -Wextra -pedantic
 
 # Linker flags
-LINKER_FLAGS = -lSDL2
+LINKER_FLAGS = -lncurses
 
 # Source and object files
 SRCDIR = src
@@ -18,6 +18,9 @@ OBJ_NAME = pacman
 # Default rule
 all: $(OBJ_NAME)
 	@echo "Build complete. Executable: $(OBJ_NAME)"
+
+run: all
+	./${OBJ_NAME}
 
 # Link the executable
 $(OBJ_NAME): $(OBJECTS)
