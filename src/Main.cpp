@@ -1,5 +1,5 @@
 // author:Aryanthepain
-#include <ncurses/curses.h>
+#include <curses.h>
 #include <bits/stdc++.h>
 // #include <ctime>
 // using namespace std;
@@ -34,10 +34,17 @@ int main()
 	noecho();
 	keypad(stdscr, TRUE);
 	curs_set(0);
-	// timeout(100);
+	//timeout(100);
+
+	int start_x, start_y;
+	getmaxyx(stdscr, start_y, start_x);
+	refresh();
+	
+	WINDOW* win=newwin(2*start_y/3, 2*start_x/3,0,0);
+	box(win,0,0);
+	wrefresh(win);
 
 	int max_x, max_y;
-	getmaxyx(stdscr, max_y, max_x);
 
 	Snake snake1, snake2;
 	int food_x, food_y;
@@ -49,6 +56,7 @@ int main()
 		// Update game state
 		// Draw everything
 		// Check for game over
+		break;
 	}
 	getch();
 	// Cleanup
