@@ -133,6 +133,21 @@ void handle_input(Snake &snake1, Snake &snake2) {
     }
 }
 
+void update_food(bool &food_present, Snake &snake1, Snake &snake2, int &food_x, int &food_y, int max_x, int max_y){
+	if(food_present) return;
+	
+	while(!food_present){
+		food_x=rand()%(max_x-2)+1;
+		food_y=rand()%(max_y-2)+1;
+		food_present=true;
+			
+		//food spawns on a snake
+		food_present=food_still_present(snake1, snake2, food_x, food_y);
+	}
+	
+	return;
+}
+
 int main()
 {
 	// Initialize ncurses
@@ -166,17 +181,10 @@ int main()
 		mvwprintw(win, snake1.body.back().second, snake1.body.back().first, " ");
 		mvwprintw(win, snake2.body.back().second, snake2.body.back().first, " ");
 		
+		//update food and snakes
 		food_present=(update_snake(snake1, max_x, max_y, food_x, food_y) && update_snake(snake2, max_x, max_y,food_x, food_y));
+		update_food(food_present, snake1, snake2, food_x, food_y, max_x, max_y);
 		
-		while(!food_present){
-			food_x=rand()%(max_x-2)+1;
-			food_y=rand()%(max_y-2)+1;
-			food_present=true;
-			
-			//food spawns on a snake
-			food_present=food_still_present(snake1, snake2, food_x, food_y);
-		}
-
 		draw(snake1, snake2, food_x, food_y, win);
 		wrefresh(win);
 
