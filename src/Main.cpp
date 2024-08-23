@@ -1,9 +1,6 @@
 // author:Aryanthepain
-#include <curses.h>
-#include <bits/stdc++.h>
-#define pb push_back
-#define mp make_pair
-using namespace std;
+#include "main.h"
+
 
 enum Direction{UP, DOWN, LEFT, RIGHT};
 
@@ -20,7 +17,7 @@ void draw(Snake &snake1, Snake &snake2, int &food_x, int &food_y, WINDOW* win){
 	
 	//draw snake1
 	for(size_t i=0;i<snake1.body.size();i++){
-		mvwprintw(win, snake1.body[i].second, snake1.body[i].first, "#");
+		mvwprintw(win, snake1.body[i].second, snake1.body[i].first, "O");
 	}
 	
 	//draw snake 2
