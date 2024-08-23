@@ -1,7 +1,6 @@
 // author:Aryanthepain
 #include "main.h"
 
-
 enum Direction{UP, DOWN, LEFT, RIGHT};
 
 struct Snake
