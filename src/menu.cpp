@@ -67,6 +67,7 @@ void tutorial(WINDOW *menu, MODE mode)
 
 MODE display_menu(WINDOW *menu)
 {
+	keypad(menu, TRUE);
 	MODE mode = single;
 
 	mvwprintw(menu, 0, 0, "SNAKES GAME BY ARYAN GUPTA");
