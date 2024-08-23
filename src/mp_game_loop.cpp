@@ -18,14 +18,30 @@ void draw(Snake &snake1, Snake &snake2, int &food_x, int &food_y, WINDOW* win){
 void handle_input(Snake &snake1, Snake &snake2) {
     int ch = getch();
     switch (ch) {
-        case 'w': if(snake1.direction==DOWN) break; snake1.direction = UP; break;
-        case 's': if(snake1.direction==UP) break; snake1.direction = DOWN; break;
-        case 'a': if(snake1.direction==RIGHT) break; snake1.direction = LEFT; break;
-        case 'd': if(snake1.direction==LEFT) break; snake1.direction = RIGHT; break;
-        case KEY_UP: if(snake2.direction==DOWN) break; snake2.direction = UP; break;
-        case KEY_DOWN: if(snake2.direction==UP) break; snake2.direction = DOWN; break;
-        case KEY_LEFT: if(snake2.direction==RIGHT) break; snake2.direction = LEFT; break;
-        case KEY_RIGHT: if(snake2.direction==LEFT) break; snake2.direction = RIGHT; break;
+        case 'w': 
+        	if(snake1.direction==DOWN) break; 
+        	snake1.direction = UP; break;
+        case 's': 
+        	if(snake1.direction==UP) break; 
+        	snake1.direction = DOWN; break;
+        case 'a': 
+        	if(snake1.direction==RIGHT) break; 
+	        snake1.direction = LEFT; break;
+        case 'd': 
+        	if(snake1.direction==LEFT) break; 
+        	snake1.direction = RIGHT; break;
+        case KEY_UP: 
+    	    if(snake2.direction==DOWN) break; 
+        	snake2.direction = UP; break;
+        case KEY_DOWN: 
+        	if(snake2.direction==UP) break; 
+        	snake2.direction = DOWN; break;
+        case KEY_LEFT: 
+        	if(snake2.direction==RIGHT) break; 
+        	snake2.direction = LEFT; break;
+        case KEY_RIGHT: 
+        	if(snake2.direction==LEFT) break; 
+        	snake2.direction = RIGHT; break;
     }
 }
 

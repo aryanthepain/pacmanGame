@@ -86,7 +86,7 @@ int main()
 		mvwprintw(win, snake2.body.back().second, snake2.body.back().first, " ");
 		
 		//update food and snakes
-		food_present=(update_snake(snake1, max_x, max_y, food_x, food_y) && update_snake(snake2, max_x, max_y,food_x, food_y));
+		food_present=(update_snake(snake1, max_x, max_y, food_x, food_y) && update_snake(snake2, max_x, max_y, food_x, food_y));
 		update_food(food_present, snake1, snake2, food_x, food_y, max_x, max_y);
 		
 		draw(snake1, snake2, food_x, food_y, win);
