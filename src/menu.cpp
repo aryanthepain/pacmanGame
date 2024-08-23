@@ -52,13 +52,14 @@ void tutorial(WINDOW *menu, MODE mode)
 		mvwprintw(menu, 0, 0, "eat 'A' to increase score");
 		mvwprintw(menu, 1, 0, "Do NOT eat yourself");
 		mvwprintw(menu, 2, 0, "Do NOT eat other player");
-		mvwprintw(menu, 3, 0, "Eliminate other player to win");
+		mvwprintw(menu, 3, 0, "Eliminate other players by making them eat you");
+		mvwprintw(menu, 4, 0, "(You are POISONOUS, THAT'S HOW SNAKES WORKS!)");
 
-		mvwprintw(menu, 5, 0, "Player 1 (O)");
-		mvwprintw(menu, 6, 0, "WASD to move");
+		mvwprintw(menu, 6, 0, "Player 1 (O)");
+		mvwprintw(menu, 7, 0, "WASD to move");
 
-		mvwprintw(menu, 8, 0, "Player 2 (H)");
-		mvwprintw(menu, 9, 0, "arrow keys to move");
+		mvwprintw(menu, 9, 0, "Player 2 (H)");
+		mvwprintw(menu, 10, 0, "arrow keys to move");
 	}
 
 	wrefresh(menu);

@@ -7,9 +7,12 @@
 #define mp make_pair
 using namespace std;
 
-enum MODE{single, multi};
+enum MODE
+{
+    single,
+    multi
+};
 
-MODE display_menu(WINDOW * menu);
+MODE display_menu(WINDOW *menu);
 
 #endif
-

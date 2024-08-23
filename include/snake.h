@@ -4,9 +4,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-enum Direction { UP, DOWN, LEFT, RIGHT };
+enum Direction
+{
+    UP,
+    DOWN,
+    LEFT,
+    RIGHT
+};
 
-struct Snake {
+struct Snake
+{
     vector<pair<int, int>> body;
     Direction direction;
     int score;
