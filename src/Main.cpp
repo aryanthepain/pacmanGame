@@ -196,7 +196,10 @@ int main()
 
 //quit screen
 //different win conditions
-
+	mvwprintw(win, 3, 3, "hello");
+	wrefresh(win);
+	napms(1000);
+	timeout(-1);
 	getch();
 	// Cleanup
 	endwin();
