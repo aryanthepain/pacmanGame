@@ -9,7 +9,7 @@ enum Direction{UP, DOWN, LEFT, RIGHT};
 
 struct Snake
 {
-	std::vector<std::pair<int, int>> body;
+	vector<pair<int, int>> body;
 	Direction direction;
 };
 
@@ -19,12 +19,12 @@ void draw(Snake &snake1, Snake &snake2, int &food_x, int &food_y, WINDOW* win){
 	mvwprintw(win, food_y, food_x,"A");
 	
 	//draw snake1
-	for(int i=0;i<snake1.body.size();i++){
+	for(size_t i=0;i<snake1.body.size();i++){
 		mvwprintw(win, snake1.body[i].second, snake1.body[i].first, "#");
 	}
 	
 	//draw snake 2
-	for(int i=0;i<snake2.body.size();i++){
+	for(size_t i=0;i<snake2.body.size();i++){
 		mvwprintw(win, snake2.body[i].second, snake2.body[i].first, "H");
 	}
 }
@@ -147,7 +147,7 @@ int main()
 	getmaxyx(stdscr, start_y, start_x);
 	refresh();
 	
-	WINDOW* win=newwin(2*start_y/3, 2*start_x/3,0,0);
+	WINDOW* win=newwin(2*start_y/3, 2*start_x/3,1,0);
 	box(win,0,0);
 	wrefresh(win);
 
@@ -166,17 +166,11 @@ int main()
 		mvwprintw(win, snake1.body.back().second, snake1.body.back().first, " ");
 		mvwprintw(win, snake2.body.back().second, snake2.body.back().first, " ");
 		
-		food_present=update_snake(snake1, max_x, max_y, food_x, food_y);
-		if(!food_present){
-			bool temp=update_snake(snake2, max_x, max_y,food_x, food_y);
-		}
-		else{
-			food_present=update_snake(snake2, max_x, max_y,food_x, food_y);
-		}
+		food_present=(update_snake(snake1, max_x, max_y, food_x, food_y) && update_snake(snake2, max_x, max_y,food_x, food_y));
 		
 		while(!food_present){
-			food_x=rand()%(max_x-1)+1;
-			food_y=rand()%(max_y-1)+1;
+			food_x=rand()%(max_x-2)+1;
+			food_y=rand()%(max_y-2)+1;
 			food_present=true;
 			
 			//food spawns on a snake

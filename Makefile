@@ -12,7 +12,7 @@ SRCDIR = src
 OBJDIR = obj
 SOURCES = $(wildcard $(SRCDIR)/*.cpp)
 OBJECTS = $(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.o, $(SOURCES))
-OBJ_NAME = pacman
+OBJ_NAME = snakes
 
 
 # Default rule
