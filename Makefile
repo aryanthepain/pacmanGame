@@ -46,6 +46,9 @@ git:
 	git commit -m "$(m)"
 	git push origin $(b)
 
+push:
+	git push origin $(b)
+
 # Clean up generated files
 clean:
 	rm -rf $(OBJDIR) $(OBJ_NAME)
