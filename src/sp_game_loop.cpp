@@ -153,9 +153,9 @@ void sp_init_game(Snake &snake1, int &food_x, int &food_y, int max_x, int max_y,
 }
 
 void sp_draw_score(WINDOW *stdscr, int a, int high, int max_y){
-	mvwprintw(stdscr, max_y+2, 8, "             ");
-	mvwprintw(stdscr, max_y+2, 12, "%d", a*10);
-	mvwprintw(stdscr, max_y+4, 12, "             ");
-	mvwprintw(stdscr, max_y+4, 12, "%d", high*10);
+	mvwprintw(stdscr, max_y+2, 13, "             ");
+	mvwprintw(stdscr, max_y+2, 13, "%d", a*10);
+	mvwprintw(stdscr, max_y+4, 13, "             ");
+	mvwprintw(stdscr, max_y+4, 13, "%d", high*10);
 	refresh();
 }

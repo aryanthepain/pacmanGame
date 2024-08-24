@@ -146,27 +146,30 @@ void update_food(bool &food_present, Snake &snake1, Snake &snake2, int &food_x, 
     return;
 }
 
-bool check_collision(const Snake &snake1, const Snake &snake2)
+int check_collision(const Snake &snake1, const Snake &snake2)
 {
     // check if both snakes collide with each other
-    if (snake1.body[0] == snake2.body[0])
-        return true;
+    if (snake1.body[0] == snake2.body[0]){
+        if(snake1.score == snake2.score) return 3;//draw conditions
+        else if(snake1.score > snake2.score) return 1;
+        else return 2;
+    }
 
     // Check if snake1 collides with itself
     for (size_t i = 1; i < snake1.body.size(); i++)
     {
         if (snake1.body[0] == snake1.body[i])
-            return true;
+            return 2;
         if (snake2.body[0] == snake1.body[i])
-            return true;
+            return 1;
     }
     // Check if snake2 collides with itself
     for (size_t i = 1; i < snake2.body.size(); i++)
     {
         if (snake2.body[0] == snake2.body[i])
-            return true;
+            return 1;
         if (snake1.body[0] == snake2.body[i])
-            return true;
+            return 2;
     }
 
     return false;

@@ -7,6 +7,7 @@ void mp_game(WINDOW *stdscr, WINDOW *win, int max_x, int max_y){
 	int food_x, food_y;
 	init_game(snake1, snake2, food_x, food_y, max_x, max_y, win);
 	bool food_present = true;
+	int winner=0;
 	
 	mvwprintw(stdscr, max_y+2, 1, "Scores:");
 	mvwprintw(stdscr, max_y+4, 1, "Snake 1(O):");
@@ -30,8 +31,13 @@ void mp_game(WINDOW *stdscr, WINDOW *win, int max_x, int max_y){
 		wrefresh(win);
 
 		// Check for collisions
-		if (check_collision(snake1, snake2))
+		if (winner=check_collision(snake1, snake2))
 		{
+			if(winner==3)
+				mvwprintw(win, max_y/2-2, max_x/3-4, "It is a DRAW!!!");
+			else{
+				mvwprintw(win, max_y/2-2, max_x/3-4, "Player %d wins!!!", winner);
+			}
 			break; // End the game if a collision occurs
 		}
 	}

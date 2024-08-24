@@ -47,8 +47,7 @@ int main()
 	wrefresh(win);
 	
 	if(mode==single) sp_game(stdscr, win, max_x, max_y);
-	else
-		mp_game(stdscr, win, max_x, max_y);
+	else mp_game(stdscr, win, max_x, max_y);
 
 	// quit screen
 	// different win conditions
@@ -56,7 +55,7 @@ int main()
 	wrefresh(win);
 
 	// delay after game ends to prevent accidental clicks
-	napms(1000);
+	napms(2000);
 	mvwprintw(win, max_y / 2 + 2, max_x / 3-5, "Press any key to continue");
 	wrefresh(win);
 	timeout(-1);

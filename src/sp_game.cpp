@@ -10,7 +10,7 @@ void sp_game(WINDOW *stdscr, WINDOW *win, int max_x, int max_y){
 	int high_score;
 	load_high_score(high_score);
 	
-	mvwprintw(stdscr, max_y+2, 1, "Score:");
+	mvwprintw(stdscr, max_y+2, 1, "Your Score:");
 	mvwprintw(stdscr, max_y+4, 1, "High Score: ");
 		
 	timeout(50); // getch set to time out after 100ms
