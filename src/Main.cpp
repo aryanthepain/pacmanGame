@@ -33,7 +33,7 @@ int main()
 	MODE mode;
 	mode = display_menu(menu);
 
-	WINDOW *win = newwin(min(30, 2 * start_y / 3), min(100, 2 * start_x / 3), 1, 0);
+	WINDOW *win = newwin(min(20, 2 * start_y / 3), min(50, 2 * start_x / 3), 1, 0);
 	int max_x, max_y;
 	getmaxyx(win, max_y, max_x);
 
