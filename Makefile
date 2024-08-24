@@ -14,7 +14,6 @@ SOURCES = $(wildcard $(SRCDIR)/*.cpp)
 OBJECTS = $(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.o, $(SOURCES))
 OBJ_NAME = snakes
 
-
 # Default rule
 all: $(OBJ_NAME)
 	@echo "Build complete. Executable: $(OBJ_NAME)"
