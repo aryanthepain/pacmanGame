@@ -15,6 +15,6 @@ void sp_update_food(bool &food_present, Snake &snake1, int &food_x, int &food_y,
 bool sp_check_collision(const Snake &snake1);
 void sp_draw(Snake &snake1, int &food_x, int &food_y, WINDOW *win);
 void sp_init_game(Snake &snake1, int &food_x, int &food_y, int max_x, int max_y, WINDOW *win);
-void sp_draw_score(WINDOW *stdscr, int a, int max_y);
+void sp_draw_score(WINDOW *stdscr, int a, int high, int max_y);
 
 #endif
