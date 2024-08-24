@@ -1,18 +1,19 @@
-//author: Aryanthepain
+// author: Aryanthepain
 #include "mp_game.h"
 
-
-void mp_game(WINDOW *stdscr, WINDOW *win, int max_x, int max_y){
+void mp_game(WINDOW *stdscr, WINDOW *win, int max_x, int max_y)
+{
+	// initialise everything
 	Snake snake1, snake2;
 	int food_x, food_y;
 	init_game(snake1, snake2, food_x, food_y, max_x, max_y, win);
 	bool food_present = true;
-	int winner=0;
-	
-	mvwprintw(stdscr, max_y+2, 1, "Scores:");
-	mvwprintw(stdscr, max_y+4, 1, "Snake 1(O):");
-	mvwprintw(stdscr, max_y+5, 1, "Snake 2(H):");
-		
+	int winner = 0;
+
+	mvwprintw(stdscr, max_y + 2, 1, "Scores:");
+	mvwprintw(stdscr, max_y + 4, 1, "Snake 1(O):");
+	mvwprintw(stdscr, max_y + 5, 1, "Snake 2(H):");
+
 	timeout(100); // getch set to time out after 100ms
 	while (true)
 	{
@@ -26,21 +27,30 @@ void mp_game(WINDOW *stdscr, WINDOW *win, int max_x, int max_y){
 		food_present = (update_snake(snake1, max_x, max_y, food_x, food_y) && update_snake(snake2, max_x, max_y, food_x, food_y));
 		update_food(food_present, snake1, snake2, food_x, food_y, max_x, max_y);
 
+		// draw everything
 		draw(snake1, snake2, food_x, food_y, win);
 		draw_score(stdscr, snake1.score, snake2.score, max_y);
 		wrefresh(win);
 
 		// Check for collisions
-		if (winner=check_collision(snake1, snake2))
+		/*
+		winner=>
+		 0= game running
+		 1= player 1 wins
+		 2= player 2 wins
+		 3= draw
+		*/
+		if (winner = check_collision(snake1, snake2))
 		{
-			if(winner==3)
-				mvwprintw(win, max_y/2-2, max_x/3-4, "It is a DRAW!!!");
-			else{
-				mvwprintw(win, max_y/2-2, max_x/3-4, "Player %d wins!!!", winner);
+			if (winner == 3)
+				mvwprintw(win, max_y / 2 - 2, max_x / 3 - 4, "It is a DRAW!!!");
+			else
+			{
+				mvwprintw(win, max_y / 2 - 2, max_x / 3 - 4, "Player %d wins!!!", winner);
 			}
 			break; // End the game if a collision occurs
 		}
 	}
-	
+
 	return;
 }

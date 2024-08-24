@@ -1,4 +1,4 @@
-// author:Aryanthepain
+// author: Aryanthepain
 #ifndef SP_GAME_H
 #define SP_GAME_H
 #include <curses.h>
@@ -6,7 +6,6 @@
 #include "snake.h"
 #include "sp_game_loop.h"
 #include "score.h"
-
 
 #define pb push_back
 #define mp make_pair

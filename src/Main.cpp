@@ -28,15 +28,11 @@ int main()
 		return 1;
 	}
 	refresh();
+
+	// menu mode
 	MODE mode;
 	mode = display_menu(menu);
-	/*	//debug code
-	if(mode==single){
-			mvwprintw(stdscr, 0,0, "single");
-		}
-		refresh();
-		getch();
-	*/
+
 	WINDOW *win = newwin(min(30, 2 * start_y / 3), min(100, 2 * start_x / 3), 1, 0);
 	int max_x, max_y;
 	getmaxyx(win, max_y, max_x);
@@ -45,18 +41,20 @@ int main()
 	refresh();
 	box(win, 0, 0);
 	wrefresh(win);
-	
-	if(mode==single) sp_game(stdscr, win, max_x, max_y);
-	else mp_game(stdscr, win, max_x, max_y);
+
+	// game mode based on which mode is chosen
+	if (mode == single)
+		sp_game(stdscr, win, max_x, max_y);
+	else
+		mp_game(stdscr, win, max_x, max_y);
 
 	// quit screen
-	// different win conditions
 	mvwprintw(win, max_y / 2, max_x / 3, "GAME OVER!");
 	wrefresh(win);
 
 	// delay after game ends to prevent accidental clicks
 	napms(2000);
-	mvwprintw(win, max_y / 2 + 2, max_x / 3-5, "Press any key to continue");
+	mvwprintw(win, max_y / 2 + 2, max_x / 3 - 5, "Press any key to continue");
 	wrefresh(win);
 	timeout(-1);
 	getch();

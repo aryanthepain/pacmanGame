@@ -1,4 +1,4 @@
-// author:Aryanthepain
+// author: Aryanthepain
 #ifndef MENU_H
 #define MENU_H
 #include <curses.h>

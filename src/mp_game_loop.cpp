@@ -1,3 +1,4 @@
+// author: Aryanthepain
 #include "mp_game_loop.h"
 
 void draw(Snake &snake1, Snake &snake2, int &food_x, int &food_y, WINDOW *win)
@@ -104,8 +105,8 @@ bool update_snake(Snake &snake, int max_x, int max_y, int food_x, int food_y)
         snake.body.pop_back();
         return true; // food is still present
     }
-	
-	snake.score++;
+
+    snake.score++;
     return false; // no food
 }
 
@@ -149,10 +150,14 @@ void update_food(bool &food_present, Snake &snake1, Snake &snake2, int &food_x, 
 int check_collision(const Snake &snake1, const Snake &snake2)
 {
     // check if both snakes collide with each other
-    if (snake1.body[0] == snake2.body[0]){
-        if(snake1.score == snake2.score) return 3;//draw conditions
-        else if(snake1.score > snake2.score) return 1;
-        else return 2;
+    if (snake1.body[0] == snake2.body[0])
+    {
+        if (snake1.score == snake2.score)
+            return 3; // draw conditions
+        else if (snake1.score > snake2.score)
+            return 1;
+        else
+            return 2;
     }
 
     // Check if snake1 collides with itself
@@ -177,42 +182,32 @@ int check_collision(const Snake &snake1, const Snake &snake2)
 
 void init_game(Snake &snake1, Snake &snake2, int &food_x, int &food_y, int max_x, int max_y, WINDOW *win)
 {
-	// Initialize food position
-	food_x = max_x / 2;
-	food_y = max_y / 2;
+    // Initialize food position
+    food_x = max_x / 2;
+    food_y = max_y / 2;
 
-	// initialise snake 1
-	// debug code
-	/*	snake1.body.pb(mp(12,1));
-		snake1.body.pb(mp(11,1));
-		snake1.body.pb(mp(10,1));
-		snake1.body.pb(mp(9,1));
-		snake1.body.pb(mp(8,1));
-		snake1.body.pb(mp(7,1));
-		snake1.body.pb(mp(6,1));
-		snake1.body.pb(mp(5,1));
-		snake1.body.pb(mp(4,1));
-	*/
-	snake1.body.pb(mp(3, 1));
-	snake1.body.pb(mp(2, 1));
-	snake1.body.pb(mp(1, 1));
-	snake1.direction = RIGHT;
-	snake1.score = 0;
+    // initialise snake 1
+    snake1.body.pb(mp(3, 1));
+    snake1.body.pb(mp(2, 1));
+    snake1.body.pb(mp(1, 1));
+    snake1.direction = RIGHT;
+    snake1.score = 0;
 
-	// initialise snake 2
-	snake2.body.pb(mp(max_x - 5, max_y - 3));
-	snake2.body.pb(mp(max_x - 4, max_y - 3));
-	snake2.body.pb(mp(max_x - 3, max_y - 3));
-	snake2.direction = LEFT;
-	snake2.score = 0;
+    // initialise snake 2
+    snake2.body.pb(mp(max_x - 5, max_y - 3));
+    snake2.body.pb(mp(max_x - 4, max_y - 3));
+    snake2.body.pb(mp(max_x - 3, max_y - 3));
+    snake2.direction = LEFT;
+    snake2.score = 0;
 
-	draw(snake1, snake2, food_x, food_y, win);
+    draw(snake1, snake2, food_x, food_y, win);
 }
 
-void draw_score(WINDOW *stdscr, int a, int b, int max_y){
-	mvwprintw(stdscr, max_y+4, 12, "      ");
-	mvwprintw(stdscr, max_y+5, 12, "      ");
-	mvwprintw(stdscr, max_y+4, 13, "%d", a*10);
-	mvwprintw(stdscr, max_y+5, 13, "%d", b*10);
-	refresh();
+void draw_score(WINDOW *stdscr, int a, int b, int max_y)
+{
+    mvwprintw(stdscr, max_y + 4, 12, "      ");
+    mvwprintw(stdscr, max_y + 5, 12, "      ");
+    mvwprintw(stdscr, max_y + 4, 13, "%d", a * 10);
+    mvwprintw(stdscr, max_y + 5, 13, "%d", b * 10);
+    refresh();
 }

@@ -1,4 +1,4 @@
-// author:Aryanthepain
+// author: Aryanthepain
 #ifndef MP_GAME_H
 #define MP_GAME_H
 #include <curses.h>

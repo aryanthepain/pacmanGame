@@ -1,4 +1,4 @@
-// author:Aryanthepain
+// author: Aryanthepain
 #ifndef SCORE_H
 #define SCORE_H
 #include <curses.h>
